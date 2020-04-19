@@ -1,0 +1,71 @@
+<div class="col-md-6">
+    <h2 class="text-center">{{empformlabel}}</h2>
+    <!-- {{addUserForm.value | json}} -->
+
+    <form [formGroup]="addUserForm" novalidate class="form">
+        <div class="form-group" >
+            <input formControlName="id" type="number" value="id" class="form-control" >
+        </div>
+
+        <div class="form-group">
+            <label>First name</label>
+            <input [class.is-invalid]="firstName.touched && firstName.invalid" formControlName="firstName" type="text" class="form-control" >
+            <div *ngIf="firstName.touched && firstName.invalid">
+                <small *ngIf="firstName.errors?.required" class="text-danger">First name required</small>
+                <small *ngIf="firstName.errors?.minlength" class="text-danger">Insufficient username</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Middle name</label>
+            <input  formControlName="middleName" type="text" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label>Last name</label>
+            <input [class.is-invalid]="lastName.touched && lastName.invalid" formControlName="lastName" type="text" class="form-control" >
+            <div *ngIf="lastName.touched && lastName.invalid">
+                <small *ngIf="lastName.errors?.required" class="text-danger">Last name required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input [class.is-invalid]="email.touched && email.invalid" formControlName="email" type="text" class="form-control" >
+            <div *ngIf="email.touched && email.invalid">
+                <small *ngIf="email.errors?.required" class="text-danger">email required</small>
+                <small *ngIf="email.errors?.email" class="text-danger">Incorrect email id</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Phone number</label>
+            <input [class.is-invalid]="phoneNo.touched && phoneNo.invalid" formControlName="phoneNo" type="text" class="form-control" >
+            <div *ngIf="phoneNo.touched && phoneNo.invalid">
+                <small *ngIf="phoneNo.errors?.required" class="text-danger">Phone number required</small>
+                <small *ngIf="phoneNo.errors?.minlength" class="text-danger">Incorrect Phone Number</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Role</label>
+            <select class="select-role" formControlName="role_id">
+                <option value="">select-role-</option>
+                <option *ngFor="let role of roles" [value]="role.role_id">{{role.role_name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input [class.is-invalid]="address.touched && address.invalid" formControlName="address" type="text" class="form-control" >
+            <div *ngIf="address.touched && address.invalid">
+                <small *ngIf="address.errors?.required" class="text-danger">Address required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Customer</label>
+            <select class="select-role" formControlName="c_id">
+                <option value="">select-Customer-</option>
+                <option *ngFor="let Customer of Customers" [value]="Customer.c_id">{{Customer.name}}</option>
+            </select>
+        </div>
+        <button class="btn btn-success" *ngIf="btnvisibility" [disabled]='addUserForm.invalid'  (click)="onSubmit()">Save</button>
+        <button class="btn btn-success" *ngIf="!btnvisibility" [disabled]='addUserForm.invalid'  (click)="onUpdate()">Update</button>
+
+        <p>Form Value: {{addUserForm.value | json}}</p>
+    </form>
+</div>
