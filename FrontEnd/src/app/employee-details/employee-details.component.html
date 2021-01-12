@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <h1 class="text-center"> Employee Details</h1>
+        <br>
+        <button class="btn btn-success text-right" (click)="addUser()"> Add User</button>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Middle Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Role</th>
+              <th scope="col">Address</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Operation</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr *ngFor="let employee of employees">
+              <td>{{employee.firstName}}</td>
+              <td>{{employee.middleName}}</td>
+              <td>{{employee.lastName}}</td>
+              <td>{{employee.email}}</td>
+              <td>{{employee.phoneNo}}</td>
+              <td>{{employee.role_name}}</td>
+              <td>{{employee.address}}</td>
+              <td>{{employee.name}}</td>
+              <td><button class="btn btn-success" (click)="editEmp(employee)">Edit</button></td>
+              <td><button class="btn btn-danger" (click)="deleteEmp(employee)">Delete</button></td>
+  
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
